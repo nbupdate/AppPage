@@ -54,18 +54,19 @@
       animation: bounceIn 2s ease;
     }
 
-    .cta button {
+    .cta a {
+      display: inline-block;
       padding: 15px 40px;
       font-size: 1rem;
       color: #fff;
       background-color: #029386; /* Primary Teal Color */
       border: none;
       border-radius: 50px;
-      cursor: pointer;
+      text-decoration: none; /* Remove underline */
       transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
-    .cta button:hover {
+    .cta a:hover {
       transform: translateY(-5px);
       background-color: #017369; /* Darker Shade of Teal */
     }
@@ -154,7 +155,7 @@
         font-size: 2.5rem;
       }
 
-      .cta button {
+      .cta a {
         padding: 12px 30px;
         font-size: 0.9rem;
       }
@@ -172,7 +173,7 @@
 
     <!-- Call to Action -->
     <div class="cta">
-      <button id="downloadBtn"><i class="fas fa-download"></i> Download the App</button>
+      <a id="downloadBtn" href="#" download><i class="fas fa-download"></i> Download the App</a>
     </div>
 
     <!-- Features Section -->
@@ -209,10 +210,9 @@
         const data = await response.json();
         const appUpdateLink = data.ebubt_api.app_update_link;
 
-        // Set the download button to link to the app update link
-        document.getElementById('downloadBtn').onclick = function() {
-          window.location.href = appUpdateLink;
-        };
+        // Set the download link in the anchor tag
+        const downloadBtn = document.getElementById('downloadBtn');
+        downloadBtn.href = appUpdateLink;
       } catch (error) {
         console.error('Error fetching the app update link:', error);
       }
